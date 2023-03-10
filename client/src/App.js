@@ -1,10 +1,19 @@
 import React from 'react'
-import Header from './components/header/Header'
+
+//components
+import Header from './components/header/Header';
+import Home from './components/home/Home';
+
+//Material UI
+import { Box } from '@mui/material';
 
 export default function App() {
   return (
     <>
-      <Header/>
+      <Header />
+      <Box style={{marginTop : 54 }}>
+          <Home />
+      </Box>
     </>
   )
 }

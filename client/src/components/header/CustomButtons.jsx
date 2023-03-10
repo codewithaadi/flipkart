@@ -31,7 +31,7 @@ export default function CustomButtons() {
   return (
     <Wrapper>
         <LoginButton variant='container'>Login</LoginButton>
-        <Typography style={{marginTop : 3 , width: 135}}>Become a Seller</Typography>
+        <Typography style={{marginTop : 3 , width: 135, fontWeight: 500}}>Become a Seller</Typography>
         <Typography style={{marginTop : 3 }}>More</Typography>
 
         <Container>

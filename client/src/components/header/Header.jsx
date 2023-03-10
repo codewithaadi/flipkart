@@ -35,7 +35,7 @@ export default function Header() {
                 <img src='https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/flipkart-plus_8d85f4.png' alt='Flipkart Logo' style={{width: 75}}/>
                 <Box style={{display:'flex'}}>
                    <SubHeading>Explore&nbsp;
-                        <Box component="span" style={{color:'#FFE500'}}>Plus</Box>
+                        <Box component="span" style={{color:'#FFE500', fontWeight: 600}}>Plus</Box>
                    </SubHeading>
                    <PlusImage src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/plus_aef861.png" alt="sub-logo" />
                 </Box>
