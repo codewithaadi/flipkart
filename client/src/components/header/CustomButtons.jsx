@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { useState } from 'react';
+
+//Components
+import LoginDialog from '../login/LoginDialog';
 
 //Material UI
-import {Box,Button, Typography,styled} from '@mui/material';
+import { Box, Button, Typography, styled } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Wrapper = styled(Box)`
@@ -28,16 +32,24 @@ const LoginButton = styled(Button)`
 `
 
 export default function CustomButtons() {
-  return (
-    <Wrapper>
-        <LoginButton variant='container'>Login</LoginButton>
-        <Typography style={{marginTop : 3 , width: 135, fontWeight: 500}}>Become a Seller</Typography>
-        <Typography style={{marginTop : 3 }}>More</Typography>
 
-        <Container>
-            <ShoppingCartIcon/>
-            <Typography>Cart</Typography>
-        </Container>
-    </Wrapper>
-  )
+    const [open, setOpen] = useState(false);
+
+    const openDialog = ()=>{
+        setOpen(true);
+    }
+
+    return (
+        <Wrapper>
+            <LoginButton variant='container' onClick={()=>openDialog()}>Login</LoginButton>
+            <Typography style={{ marginTop: 3, width: 135, fontWeight: 500 }}>Become a Seller</Typography>
+            <Typography style={{ marginTop: 3 }}>More</Typography>
+
+            <Container>
+                <ShoppingCartIcon />
+                <Typography>Cart</Typography>
+            </Container>
+            <LoginDialog open={open} setOpen={setOpen}/>
+        </Wrapper>
+    )
 }
