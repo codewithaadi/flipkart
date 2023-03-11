@@ -8,10 +8,14 @@ import "react-multi-carousel/lib/styles.css";
 //Material UI
 import { styled } from '@mui/material';
 
-const Image = styled('img')({
+const Image = styled('img')(({theme})=> ({
     width: '100%',
-    height: 280
-})
+    height: 280,
+    [theme.breakpoints.down('md')]:{
+        objectFit: 'cover',
+        height: 180
+    }
+}))
 
 const responsive = {
     desktop: {
