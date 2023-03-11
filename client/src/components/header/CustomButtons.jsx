@@ -1,8 +1,10 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useContext } from 'react';
 
 //Components
 import LoginDialog from '../login/LoginDialog';
+import { DataContext } from '../../context/DataProvider';
+import Profile from './Profile';
 
 //Material UI
 import { Box, Button, Typography, styled } from '@mui/material';
@@ -34,6 +36,7 @@ const LoginButton = styled(Button)`
 export default function CustomButtons() {
 
     const [open, setOpen] = useState(false);
+    const {account,setAccount} = useContext(DataContext);
 
     const openDialog = ()=>{
         setOpen(true);
@@ -41,7 +44,10 @@ export default function CustomButtons() {
 
     return (
         <Wrapper>
-            <LoginButton variant='container' onClick={()=>openDialog()}>Login</LoginButton>
+            {
+                account ? <Profile account={account} setAccount={setAccount}/> : <LoginButton variant='container' onClick={()=>openDialog()}>Login</LoginButton>
+            }
+            
             <Typography style={{ marginTop: 3, width: 135, fontWeight: 500 }}>Become a Seller</Typography>
             <Typography style={{ marginTop: 3 }}>More</Typography>
 
