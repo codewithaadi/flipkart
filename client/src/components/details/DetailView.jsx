@@ -9,19 +9,27 @@ import ActionItem from './ActionItem';
 import ProductDetail from './ProductDetail';
 
 //MUI
-import { Box, Typography, Grid, styled } from '@mui/material';
+import { Box,Grid, styled } from '@mui/material';
 
 //CSS
 const Component = styled(Box)`
     background : #f2f2f2;
     margin-top : 55px;
 `
-const Container = styled(Grid)`
-    background : #FFFFFF;
-    display: flex;
-`
+const Container = styled(Grid)(({theme})=>({
+    background : '#FFFFFF',
+    display: 'flex',
+    [theme.breakpoints.down('md')]:{
+      margin: 0
+    }
+}))
+
 const RightContainer = styled(Grid)`
-    margin-top : 50px;
+    margin-top : 30px;
+    padding-left: 25px;
+    &>p{
+      margin-top: 10px;
+    }
 `
 export default function DetailView() {
 
@@ -38,26 +46,14 @@ export default function DetailView() {
   return (
     <Component>
       {
-        !loading
-
-        &&
+        product && Object.keys(product).length &&
 
         <Container container>
           <Grid item lg={4} md={4} sm={8} xs={12}>
             <ActionItem product={product} />
           </Grid>
           <RightContainer item lg={8} md={8} sm={8} xs={12}>
-            <Typography> {product.title.longTitle} </Typography>
-            <Typography style={{ marginTop: 5, color: '#878787', fontSize: 14 }}> 8 Rating & 1 Reviews
-            <Box>
-                <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/fa_62673a.png" alt='f-assured' style={{width:77, marginLeft:20}}/>
-            </Box>
-            </Typography>
-            <Typography>
-                <Box component='span' style={{fontSize:28}}>₹{product.price.cost}</Box>&nbsp;&nbsp;&nbsp;
-                <Box component='span' style={{color:'#878787'}}><strike>{product.price.mrp}</strike></Box>&nbsp;&nbsp;&nbsp;
-                <Box component='span' style={{color:'#388E3C'}}>{product.price.discount}</Box>
-            </Typography>
+            <ProductDetail product={product} />
           </RightContainer>
         </Container>
       }
