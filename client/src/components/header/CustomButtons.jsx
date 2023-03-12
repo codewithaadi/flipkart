@@ -31,6 +31,10 @@ const LoginButton = styled(Button)`
     box-shadow: none;
     font-weight: 600;
     height: 32px;
+    &:hover {
+        color: #2874f0;
+        background: #fff;
+    }
 `
 
 export default function CustomButtons() {
@@ -45,7 +49,7 @@ export default function CustomButtons() {
     return (
         <Wrapper>
             {
-                account ? <Profile account={account} setAccount={setAccount}/> : <LoginButton variant='container' onClick={()=>openDialog()}>Login</LoginButton>
+                account ? <Profile account={account} setAccount={setAccount}/> : <LoginButton variant='container' onClick={()=>openDialog()} >Login</LoginButton>
             }
             
             <Typography style={{ marginTop: 3, width: 135, fontWeight: 500 }}>Become a Seller</Typography>

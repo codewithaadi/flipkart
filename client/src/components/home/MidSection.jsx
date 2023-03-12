@@ -26,7 +26,7 @@ export default function MidSection() {
         {
             imageURL.map(image=>(
                 <Grid item lg={4} md={4} sm={12} xs={12}>
-                <img src={image} alt='image' style={{width:'100%'}}/>
+                <img src={image} alt='Ads' style={{width:'100%'}}/>
                 </Grid>
             ))
         }

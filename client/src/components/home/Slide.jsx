@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 //Material UI
 import { Box, Typography, styled, Button, Divider } from '@mui/material';
@@ -76,7 +77,7 @@ export default function Slide(props) {
                     <img src="https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg" alt="timer-img" style={{ width: 24 }} />
                     <Countdown date={Date.now() + 5.04e+7} renderer={renderer} />
                 </Timer>}
-                
+
                 <ViewAllButton variant='contained' color='primary'>View All</ViewAllButton>
             </Deal>
             <Divider />
@@ -84,12 +85,14 @@ export default function Slide(props) {
                 autoPlaySpeed={4000}>
                 {
                     props.products.map(product => (
-                        <Box textAlign="center" style={{padding: '25px 15px'}}>
-                            <Image src={product.url} alt="product-img" />
-                            <Text style={{fontWeight:600, color:'#212121'}}>{product.title.shortTitle}</Text>
-                            <Text style={{color:'green'}}>{product.discount}</Text>
-                            <Text style={{color: '#212121', opacity: '0.6'}}>{product.tagline}</Text>
-                        </Box>
+                        <Link to={`product/${product.id}`} style={{textDecoration: 'none'}}>
+                            <Box textAlign="center" style={{ padding: '25px 15px' }}>
+                                <Image src={product.url} alt="product-img" />
+                                <Text style={{ fontWeight: 600, color: '#212121' }}>{product.title.shortTitle}</Text>
+                                <Text style={{ color: 'green' }}>{product.discount}</Text>
+                                <Text style={{ color: '#212121', opacity: '0.6' }}>{product.tagline}</Text>
+                            </Box>
+                        </Link>
                     ))
                 }
             </Carousel>
