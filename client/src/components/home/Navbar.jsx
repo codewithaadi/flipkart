@@ -2,14 +2,14 @@ import React from 'react'
 import { navData } from '../../constants/data';
 
 //Material Ui
-import { Box,styled, Typography } from '@mui/material'
+import { Box, styled, Typography } from '@mui/material'
 
-const Component = styled(Box)(({theme}) => ({
-    display:'flex',
+const Component = styled(Box)(({ theme }) => ({
+    display: 'flex',
     margin: '55px 130px 0 130px',
     justifyContent: 'space-between',
-    overflow:'hidden',
-    [theme.breakpoints.down('lg')]:{
+    overflow: 'hidden',
+    [theme.breakpoints.down('lg')]: {
         margin: '0'
     }
 }))
@@ -27,14 +27,16 @@ const Text = styled(Typography)`
 export default function Navbar() {
     return (
         <>
-            <Component>
-                {navData.map(data => (
-                    <Container>
-                        <img src={data.url} alt="" style={{width:64}}/>
-                        <Text>{data.text}</Text>
-                    </Container>
-                ))}
-            </Component>
+            <Box style={{background:'#fff'}}>
+                <Component>
+                    {navData.map(data => (
+                        <Container>
+                            <img src={data.url} alt="" style={{ width: 64 }} />
+                            <Text>{data.text}</Text>
+                        </Container>
+                    ))}
+                </Component>
+            </Box>
         </>
     )
 }
