@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 //Components
 import {addToCart} from '../../redux/actions/cartAction';
+import { payUsingPaytm } from '../../service/api';
+import {post} from '../../utils/paytm'
 
 //MUI
 import { Box, Button, styled } from '@mui/material';
@@ -52,13 +54,22 @@ export default function ActionItem(props) {
         navigate('/cart')
     }
 
+
+    const buyNow =async ()=>{
+        let response = await payUsingPaytm({amount:500,email:'codewithaadi31@gmail.com'});
+        let informaton = {
+            action : 'https://securegw-stage.paytm.in/order/process',
+            params: response
+        }
+        post(informaton);
+    }
     return (
         <LeftContainer>
             <Box style={{ border: '1px solid #f0f0f0', padding: '15px 20px', width: '90%', marginBottom: 10}}>
                 <Image src={props.product.detailUrl} alt="product" />
             </Box>
             <StyledButton variant='contained' onClick={()=> addItemToCart()} style={{ marginRight: 10, background: '#ff9f00' }}><ShoppingCartIcon />Add to Cart</StyledButton>
-            <StyledButton variant='contained' style={{ background: '#fb541b' }}><FlashOnIcon />Buy Now</StyledButton>
+            <StyledButton variant='contained' style={{ background: '#fb541b' }} onClick={()=>buyNow()}><FlashOnIcon />Buy Now</StyledButton>
         </LeftContainer>
     )
 }
